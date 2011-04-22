@@ -1,11 +1,11 @@
 Description:
 Highlight quickfix errors in buffer. This plugin was designed to support
-the editqf vim script
-(http://www.vim.org/scripts/script.php?script_id=3557).
+the editqf vim script (http://www.vim.org/scripts/script.php?script_id=3557).
 
 Two commands are provided:
 	:HierUpdate		" update error highlighting for current buffer
-	:HierClear		" remove highlighting - it will be when the buffer is revisited or :HierUpdate is called
+	:HierClear		" remove highlighting - it will be reenabled when
+					" the buffer is revisited or :HierUpdate is called
 
 The hightlight group can be customized by setting the following
 variable:
