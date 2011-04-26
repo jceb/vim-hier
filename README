@@ -31,7 +31,7 @@ The following commands are provided:
 ==========================================================================
 CUSTOMIZATION                                           *hier-customization*
 
-The hightlight group can be customized by setting the following variable.
+The highlight group can be customized by setting the following variable.
 Setting a variable to the empty string "" will disable highlighting of that
 group:
 	let g:hier_highlight_group_qf  = 'ErrorMsg'
