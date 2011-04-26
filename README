@@ -16,8 +16,9 @@ was designed to support the editqf vim script
 (http://www.vim.org/scripts/script.php?script_id=3557) but it also works
 very well stand alone.
 
-The latest development version is available at
-https://github.com/jceb/vim-hier.
+This script can be downloaded from
+http://www.vim.org/scripts/script.php?script_id=3564. The latest development
+version is available at https://github.com/jceb/vim-hier.
 
 ==========================================================================
 USAGE                                                           *hier-usage*
