@@ -16,6 +16,6 @@ ${PLUGIN}.vba.gz: ${PLUGIN}.vba
 vba.gz: ${PLUGIN}.vba.gz
 
 clean:
-	@rm -rf ${PLUGIN}.vba doc files
+	@rm -rf ${PLUGIN}.vba ${PLUGIN}.vba.gz doc files
 
-.PHONY: all clean vba
+.PHONY: all clean vba vba.gz
