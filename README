@@ -1,4 +1,4 @@
-*hier.txt*		For Vim version 7.3	       Last change: 2011 June 26
+*hier.txt*		For Vim version 7.3	   Last change: 2011 August 27
 				    Copyright (c) 2011 Jan Christoph Ebersbach
 
 Hier                                                                      *hier*
@@ -7,6 +7,7 @@ DESCRIPTION                    |hier-description|
 USAGE                          |hier-usage|
 CUSTOMIZATION                  |hier-customization|
 INSTALLATION                   |hier-installation|
+RELATED PLUGINS                |hier-related|
 CHANGELOG                      |hier-changelog|
 
 ==============================================================================
@@ -54,6 +55,18 @@ INSTALLATION                                                 *hier-installation*
 1. Download hier.vba.gz
 2. Open file in vim and run :so % to install plugin
 3. Restart vim
+
+==============================================================================
+RELATED PLUGINS                                                   *hier-related*
+
+- editqf is a plugin that let's you edit and add entries in quickfix window.
+  The hier plugin is a useful extension to the editqf plugin
+  (http://www.vim.org/scripts/script.php?script_id=3557)
+
+- quickfixsigns is a plugin similar to hier. The main difference is that it
+  highlights the quickfix locations in a separate column. quickfixsigns also
+  support the highlighting of marks which is not in the focus of hier.
+  (http://www.vim.org/scripts/script.php?script_id=2584)
 
 ==============================================================================
 CHANGLOG                                                        *hier-changelog*
