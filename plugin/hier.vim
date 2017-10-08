@@ -9,6 +9,10 @@ endif
 let g:loaded_hier = 1
 
 let g:hier_enabled = ! exists('g:hier_enabled') ? 1 : g:hier_enabled
+let g:hier_auto_highlight = ! exists('g:hier_auto_highlight') ? 1 : g:hier_auto_highlight
+
+" Highlight modes: 1 = Whole line, 2 = Column only
+let g:hier_highlight_mode = ! exists('g:hier_highlight_mode') ? 1 : g:hier_highlight_mode
 
 let g:hier_highlight_group_qf = ! exists('g:hier_highlight_group_qf') ? 'SpellBad' : g:hier_highlight_group_qf
 let g:hier_highlight_group_qfw = ! exists('g:hier_highlight_group_qfw') ? 'SpellLocal' : g:hier_highlight_group_qfw
@@ -74,7 +78,11 @@ function! s:Hier(clearonly)
 				endif
 
 				if i.lnum > 0
-					call matchadd(hi_group, '\%'.i.lnum.'l')
+                                        let pattern = '\%'.i.lnum.'l'
+                                        if g:hier_highlight_mode == 2 && i.col > 0
+                                                let pattern .= '\%'.i.col.'c'
+                                        endif
+					call matchadd(hi_group, pattern)
 				elseif i.pattern != ''
 					call matchadd(hi_group, i.pattern)
 				endif
@@ -89,7 +97,9 @@ command! -nargs=0 HierClear call s:Hier(1)
 command! -nargs=0 HierStart let g:hier_enabled = 1 | HierUpdate
 command! -nargs=0 HierStop let g:hier_enabled = 0 | HierClear
 
-augroup Hier
-	au!
-	au QuickFixCmdPost,BufEnter,WinEnter * :HierUpdate
-augroup END
+if g:hier_auto_highlight
+        augroup Hier
+                au!
+                au QuickFixCmdPost,BufEnter,WinEnter * :HierUpdate
+        augroup END
+endif
