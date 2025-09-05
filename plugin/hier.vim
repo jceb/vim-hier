@@ -10,6 +10,8 @@ let g:loaded_hier = 1
 
 let g:hier_enabled = ! exists('g:hier_enabled') ? 1 : g:hier_enabled
 
+let g:hier_multiline_inner_length = ! exists('g:hier_multiline_inner_length') ? 10000 : g:hier_multiline_inner_length
+
 let g:hier_highlight_group_qf = ! exists('g:hier_highlight_group_qf') ? 'SpellBad' : g:hier_highlight_group_qf
 let g:hier_highlight_group_qfw = ! exists('g:hier_highlight_group_qfw') ? 'SpellLocal' : g:hier_highlight_group_qfw
 let g:hier_highlight_group_qfi = ! exists('g:hier_highlight_group_qfi') ? 'SpellRare' : g:hier_highlight_group_qfi
@@ -74,7 +76,28 @@ function! s:Hier(clearonly)
 				endif
 
 				if i.lnum > 0
-					call matchadd(hi_group, '\%'.i.lnum.'l')
+					if i.col <= 0
+						let pos = [[i.lnum]]
+					else
+						if i.end_lnum > 0
+							call matchaddpos(hi_group, [[i.lnum, i.col, 1000000]])
+
+							let l = i.lnum + 1
+							let l_max = i.end_lnum - 1
+							while l <= l_max
+								call matchaddpos(hi_group, [[l, 1, g:hier_multiline_inner_length]])
+								let l += 1
+							endwhile
+
+							call matchaddpos(hi_group, [[i.end_lnum, 1, i.end_col]])
+
+						elseif i.end_col > 0
+							let col_len = (i.end_col - i.col) + 1
+							call matchaddpos(hi_group, [[i.lnum, i.col, col_len]])
+						else
+							call matchaddpos(hi_group, [[i.lnum, i.col]])
+						endif
+					endif
 				elseif i.pattern != ''
 					call matchadd(hi_group, i.pattern)
 				endif

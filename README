@@ -49,6 +49,13 @@ group. Every type can be highlighted differently (error, warning, info):
 Enable/disable highlighting highlighting by default:
 	let g:hier_enabled              = 1
 
+For inner lines (all but the first and last one) of mutliline matches the
+maximum length of the highlight can be set. Defaults to 10000 (the whole
+line for every reasonable line of code) but a value between 2 and 5 is nice
+to outline the range of the issue while keeping the code readable.
+	let g:hier_multiline_inner_length = 10000
+
+
 ==============================================================================
 INSTALLATION                                                 *hier-installation*
 
